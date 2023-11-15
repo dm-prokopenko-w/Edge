@@ -17,7 +17,13 @@ public class TopPanel : MonoBehaviour
 		display.OnAwaitTime += AwaitTimeCountScore;
 		display.OnSpeed += SpeedCountScore;
 
-		_menuBtn.onClick.AddListener(() => onPlay?.Invoke(false));
+		_menuBtn.onClick.AddListener(() => Menu(onPlay));
+	}
+
+	private void Menu(Action<bool> onPlay)
+	{
+		AudioManager.Instance.CkickAudio();
+		onPlay?.Invoke(false);
 	}
 
 	private void UpdateCountScore(int value)	=> _scoreCounter.text = Constants.ScoreCounter + value.ToString();

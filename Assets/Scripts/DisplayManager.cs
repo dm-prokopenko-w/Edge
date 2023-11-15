@@ -59,6 +59,8 @@ public class DisplayManager
 
 	public void RemoveSave()
 	{
+		AudioManager.Instance.CkickAudio();
+
 		_scoreCount = Constants.DefScore;
 		OnScore?.Invoke(_scoreCount);
 		PlayerPrefs.SetInt(Constants.ScoreCount, _scoreCount);

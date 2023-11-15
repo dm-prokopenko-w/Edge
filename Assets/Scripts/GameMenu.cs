@@ -11,20 +11,28 @@ public class GameMenu : MonoBehaviour
 
     public void Init(Action<bool> onPlay, DisplayManager display)
     {
-		_playBtn.onClick.AddListener(() => onPlay?.Invoke(true));
+		_playBtn.onClick.AddListener(() => Play(onPlay));
 		_resetBtn.onClick.AddListener(display.RemoveSave);
 		_quitBtn.onClick.AddListener(Quit);
 
 		ActiveBodyMenu(false);
 	}
 
+	private void Play(Action<bool> onPlay)
+	{
+		AudioManager.Instance.CkickAudio();
+		onPlay?.Invoke(true);
+	}
+
 	public void ActiveBodyMenu(bool value)
 	{
 		_body.SetActive(!value);
+		AudioManager.Instance.CkickAudio();
 	}
 
 	private void Quit()
 	{
+		AudioManager.Instance.CkickAudio();
 		Application.Quit();
 	}
 }

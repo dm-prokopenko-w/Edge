@@ -25,7 +25,7 @@ public class ButtonItem : MonoBehaviour
 	{
 		var num = (int)time;
 		_counter.text = num.ToString();
-		if(time <= 0)
+		if (time <= 0)
 		{
 			_btn.interactable = true;
 			_counter.gameObject.SetActive(false);
@@ -37,7 +37,11 @@ public class ButtonItem : MonoBehaviour
 		}
 	}
 
-	private void Click() => _gameManager.Click(_dir);
+	private void Click()
+	{
+		_gameManager.Click(_dir);
+		AudioManager.Instance.CkickAudio();
+	}
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
