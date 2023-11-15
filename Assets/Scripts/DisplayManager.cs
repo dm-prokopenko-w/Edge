@@ -31,6 +31,7 @@ public class DisplayManager
 		OnSpeed?.Invoke(_speed);
 	}
 
+	public int ScoreCount => _scoreCount;
 	public float TimeAwaitCount => _timeAwait;
 	public float SpeedValue => _speed;
 
@@ -44,7 +45,7 @@ public class DisplayManager
 	public void UpdateTime(float count)
 	{
 		if (_timeAwait <= Math.Abs(Constants.TimeStep)) return;
-		_timeAwait += count;
+	   _timeAwait += count;
 		OnAwaitTime?.Invoke(_timeAwait);
 		PlayerPrefs.SetFloat(Constants.TimeAwaitCount, _timeAwait);
 	}
