@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
 		_currentDir = (Dir)_random.Next(1, 5);
 		_ball.UpdatePos();
 		_isPlayingTimer = true;
+		_ball.gameObject.SetActive(false);
 
 		_displayManager.UpdateScore(Constants.ScoreStep);
 		_displayManager.UpdateSpeed(Constants.SpeedStep);
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
 
 			if (_currentTime > _displayManager.TimeAwaitCount)
 			{
+				_ball.gameObject.SetActive(true);
 				_currentTime = 0f;
 				_isPlayingTimer = false;
 			}
