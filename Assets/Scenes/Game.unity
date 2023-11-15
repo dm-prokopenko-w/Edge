@@ -218,6 +218,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AbilityBtnSpeed
       objectReference: {fileID: 0}
+    - target: {fileID: 1953171479387779238, guid: f615d8b0d20e4d543a0fee89ce8db63d, type: 3}
+      propertyPath: m_text
+      value: Speed
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f615d8b0d20e4d543a0fee89ce8db63d, type: 3}
 --- !u!224 &44054090 stripped
