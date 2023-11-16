@@ -10,6 +10,7 @@ public static class Constants
 	public const string BallSpeedCount = "BallSpeedCount";
 	public const string ScaleCount = "ScaleCount";
 	public const string PlussScoreCount = "PlussScoreCount";
+	public const string RecordCount = "RecordCount";
 
 	public const string ScoreCounter = "Score: ";
 
@@ -17,6 +18,7 @@ public static class Constants
 	public const string PlusScoreCounter = "Plus score: ";
 	public const string ScaleSizeCounter = "Scale size: ";
 	public const string TimeAwaitCounter = "Time await: ";
+	public const string YourRecord = "Your record: ";
 
 	public const float MinScale = 0.5f;
 	public const float MaxScale = 1.5f;
@@ -26,6 +28,7 @@ public static class Constants
 	public const float SpeedStep = 0.2f;
 	public const float TimeStep = -0.2f;
 
+	public const int DefRecord = 0;
 	public const int DefScore = 0;
 	public const float DefSpeed = 1f;
 	public const float DefTime = 5f;

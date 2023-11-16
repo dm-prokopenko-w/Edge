@@ -34,7 +34,11 @@ public class GameManager : MonoBehaviour
 		_displayManager.Init();
 	}
 
-	public void OnTriggerWithBall() => OnPlay?.Invoke(false);
+	public void OnTriggerWithBall()
+	{
+		_displayManager.RemoveSave();
+		OnPlay?.Invoke(false);
+	}
 
 	private void ActivePlay(bool value)
 	{

@@ -9,6 +9,7 @@ public class DisplayManager
 	public Action<float> OnSpeed;
 	public Action<float> OnScale;
 	public Action<int> OnPlussScore;
+	public Action<int> OnRecord;
 
 	private int _scoreCount = 0;
 	private float _timeAwait = 5f;
@@ -17,8 +18,10 @@ public class DisplayManager
 	private int _pluss = 1;
 
 	private int _curScaleStep = 0;
-
 	private int _maxScaleStep = 5;
+
+	private int _recordCount;
+	private int _curRecordCount;
 
 	public void Init()
 	{
@@ -52,6 +55,14 @@ public class DisplayManager
 			_pluss = Constants.DefPluss;
 		}
 		OnPlussScore?.Invoke(_pluss);
+
+		_recordCount = PlayerPrefs.GetInt(Constants.RecordCount);
+		if (_recordCount <= 0)
+		{
+			_recordCount = Constants.DefRecord;
+		}
+		OnRecord?.Invoke(_recordCount);
+		_curRecordCount = 0;
 	}
 
 	public int ScoreCount => _scoreCount;
@@ -71,6 +82,18 @@ public class DisplayManager
 			_curScaleStep = 0;
 			UpdateScale(Constants.ScaleStep);
 		}
+
+		_curRecordCount += 1;
+
+		UpdateRecord(_curRecordCount);
+	}
+
+	public void UpdateRecord(int count)
+	{
+		if (_recordCount > count) return;
+		_recordCount = count;
+		OnRecord?.Invoke(_recordCount);
+		PlayerPrefs.SetInt(Constants.RecordCount, _recordCount);
 	}
 
 	public void UpdateScore(int count)
@@ -113,7 +136,7 @@ public class DisplayManager
 
 	public void RemoveSave()
 	{
-		AudioManager.Instance.CkickAudio();
+		_curRecordCount = 0;
 
 		_scoreCount = Constants.DefScore;
 		OnScore?.Invoke(_scoreCount);
