@@ -39,8 +39,8 @@ public class ButtonItem : MonoBehaviour
 
 	private void Click()
 	{
-		_gameManager.Click(_dir);
 		AudioManager.Instance.CkickAudio();
+		_gameManager.Click(_dir);
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)

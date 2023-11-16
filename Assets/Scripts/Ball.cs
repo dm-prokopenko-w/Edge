@@ -6,6 +6,8 @@ public class Ball : MonoBehaviour
 
 	public void Move(Vector3 dir) => _rb.velocity = dir;
 
+	public void UpdateScale(float scale) => transform.localScale = new Vector3(scale, scale, scale);
+
 	public void UpdatePos()
 	{
 		Move(Vector3.zero);

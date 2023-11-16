@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 
 		_topPanel.Init(OnPlay, _displayManager);
 		_bottomPanel.Init(_displayManager);
+		_displayManager.OnScale += _ball.UpdateScale;
 
 		_displayManager.Init();
 	}
@@ -63,9 +64,7 @@ public class GameManager : MonoBehaviour
 		_isPlayingTimer = true;
 		_ball.gameObject.SetActive(false);
 
-		_displayManager.UpdateScore(Constants.ScoreStep);
-		_displayManager.UpdateSpeed(Constants.SpeedStep);
-		_displayManager.UpdateTime(Constants.TimeStep);
+		_displayManager.UpdateOnClick();
 	}
 
 	private void Update()
@@ -110,5 +109,6 @@ public class GameManager : MonoBehaviour
 	private void OnDestroy()
 	{
 		OnPlay -= ActivePlay;
+		_displayManager.OnScale -= _ball.UpdateScale;
 	}
 }
